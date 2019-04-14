@@ -1,0 +1,21 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'news/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'news/style.css' %}">
+
+<div class="container">
+    {% if latest_question_list %}
+        {% for post in latest_question_list %}
+            <div class="card-sn">
+                <img src="https://via.placeholder.com/100" alt="Card image cap">
+                <div class="card-sn-body">
+                    <h5 class="card-title"><a href="{% url 'news:detail' post.id %}">{{ post.title }}</a></h5>
+                    <h6>Added On: {{ post.created_at }}</h6>
+                    <h6>Comments: 0, Likes: 1</h6>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No posts are available.</p>
+    {% endif %}
+</div>

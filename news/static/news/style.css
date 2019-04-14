@@ -1,0 +1,9 @@
+.card-sn {
+  display: grid;
+  grid-template-columns: auto 5fr;
+  grid-column-gap: 10px;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  margin: 10px 0;
+}
