@@ -1,17 +1,26 @@
 {% load static %}
-
+<title>Soccer Scrapper</title>
 <link rel="stylesheet" type="text/css" href="{% static 'news/bootstrap.min.css' %}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="{% static 'news/style.css' %}">
 
 <div class="container">
+    <div id="header">
+        <img src="http://oi65.tinypic.com/262wpjb.jpg" alt="logo" />
+    </div>
+    <div id="title">Latest News: </div>
     {% if latest_question_list %}
         {% for post in latest_question_list %}
             <div class="card-sn">
-                <img src="https://via.placeholder.com/100" alt="Card image cap">
+                {% if post.image_url != 'none' %} 
+                    <img src="{{post.image_url}}" class="img-fluid" alt="Card image cap">
+                {% else %}
+                    <img src="http://via.placeholder.com/150" class="img-fluid" alt="Card image cap">
+                {% endif %}
                 <div class="card-sn-body">
-                    <h5 class="card-title"><a href="{% url 'news:detail' post.id %}">{{ post.title }}</a></h5>
-                    <h6>Added On: {{ post.created_at }}</h6>
-                    <h6>Comments: 0, Likes: 1</h6>
+                    <h5 class="card-title"><a href="{% url 'news:detail' post.id %}">{{ post.title|truncatechars:90 }}</a></h5>
+                    <h6 class="meta-time"><i class="fas fa-clock"></i> {{ post.created_at }}</h6>
+                    <h6 class="meta-bottom"><i class="fas fa-comments"></i> 0, <i class="fab fa-gratipay"></i> 1</h6>
                 </div>
             </div>
         {% endfor %}

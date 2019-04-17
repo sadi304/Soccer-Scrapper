@@ -10,6 +10,6 @@ def index(request):
 def detail(request, post_id):
   try:
     post = Post.objects.get(pk=post_id)
-  except Question.DoesNotExist:
+  except Post.DoesNotExist:
     raise Http404("Post does not exist")
   return render(request, './detail.html', {'post': post})

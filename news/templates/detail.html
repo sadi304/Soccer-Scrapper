@@ -1,4 +1,18 @@
-<h1>{{ post.title }}</h1>
-<p>
-  {{ post.body }}
-</p>
+{% load static %}
+<title>Soccer Scrapper</title>
+<link rel="stylesheet" type="text/css" href="{% static 'news/bootstrap.min.css' %}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'news/style.css' %}">
+<div class="container">
+    <div id="header">
+        <img src="http://oi65.tinypic.com/262wpjb.jpg" alt="logo" />
+    </div>
+    <a type="a" class="btn btn-outline-primary mb-10" href="/news">GO BACK HOME</a>
+    <div class="news-single">
+      <img id="news-image" class="img-fluid" src="{{post.image_url}}">
+      <h4>{{ post.title }}</h4>
+      <p>
+        {{ post.body | safe }}
+      </p>
+    </div>
+</div>
